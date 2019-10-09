@@ -20,7 +20,6 @@ class Buscador extends React.Component {
     fetch(`http://www.omdbapi.com/?apikey=4a9b7f19&s=${this.state.keyword}`)
       .then(response => response.json())
       .then(this.renderMovies)
-      .catch(error => console.log(error));
   // console.log(this.state.keyword)
 
   renderMovies = (response) =>
@@ -48,10 +47,10 @@ class Buscador extends React.Component {
           <ul>
             {
               this.state.movies.map(
-                (movie, index) =>
+                (movie) =>
                   <li>
                     <div id="box">
-                      <h2 key={index}>{movie.Title}</h2>
+                      <h2 key={movie.imdbID}>{movie.Title}</h2>
                       <h3>{movie.Released} Released - Genre {movie.Genre}</h3>
                       <div id="movies">
                         <img src={movie.Poster} alt="" />
